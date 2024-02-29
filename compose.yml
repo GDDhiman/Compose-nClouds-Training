@@ -1,0 +1,18 @@
+services:
+  webapp:
+    build:
+      context: webapp
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - database
+  database:
+    build:
+      context: database
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    restart: always
+
+
